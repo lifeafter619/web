@@ -9,18 +9,45 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background: url('http://cdnjson.com/images/2025/01/28/1738029369108.jpg') no-repeat center center / cover;
         }
 
         .wrapper {
             text-align: center;
         }
 
+        .birthday-message {
+            font-size: 2.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .countdown {
             font-size: 2rem;
             color: #333;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .selection {
+            font-size: 1.5rem;
+            color: #ff4500;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .progress-container {
+            display: flex;
+            justify-content: space-around;
             margin-bottom: 20px;
         }
 
@@ -36,6 +63,28 @@
         @keyframes countdown-animation {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #f3f3f3;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-bar span {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #4caf50;
+            animation: countdown-bar-animation 6s linear forwards;
+        }
+
+        @keyframes countdown-bar-animation {
+            from { width: 100%; }
+            to { width: 0; }
         }
 
         /* Falling animation for fireworks and cakes */
@@ -91,10 +140,17 @@
     </script>
 </head>
 <body>
+    <div class="birthday-message">祝轩哥生日快乐🎂</div>
     <div class="wrapper">
         <div class="countdown" id="countdown">6秒后直连轩哥的看片专线😍</div>
-        <div class="progress-circle">
-            <!-- The image rotates as part of the progress circle -->
+        <div class="selection">当前选择：7p 人兽 超刺激哦....🍑🥺❤️</div>
+        <div class="progress-container">
+            <div class="progress-circle"></div>
+            <div class="progress-circle"></div>
+            <div class="progress-circle"></div>
+        </div>
+        <div class="progress-bar">
+            <span></span>
         </div>
     </div>
 </body>
