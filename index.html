@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 动画倒计时</title>
+    <style>
+        .countdown {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        /* 添加一个视觉倒计时条 */
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #f3f3f3;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar span {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background-color: #4caf50;
+            animation: countdown-animation 10s linear forwards;
+        }
+
+        /* CSS 动画，持续 10 秒 */
+        @keyframes countdown-animation {
+            from { width: 100%; }
+            to { width: 0; }
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            let seconds = 10;
+            const countdown = document.getElementById('countdown');
+            const interval = setInterval(() => {
+                countdown.textContent = seconds + ' 秒后页面将跳转';
+                seconds--;
+                if (seconds < 0) {
+                    clearInterval(interval);
+                    window.location.href = 'https://example.com';
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <div class="countdown" id="countdown">10 秒后页面将跳转</div>
+    <div class="progress-bar">
+        <span></span>
+    </div>
+</body>
+</html>
