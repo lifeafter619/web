@@ -10,28 +10,54 @@
             color: #333;
         }
 
-        /* 添加一个视觉倒计时条 */
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #f3f3f3;
-            margin-top: 20px;
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 10px solid #f3f3f3;
             position: relative;
-            overflow: hidden;
         }
 
-        .progress-bar span {
+        .progress-circle span {
             width: 100%;
             height: 100%;
             display: block;
-            background-color: #4caf50;
-            animation: countdown-animation 10s linear forwards;
+            border-radius: 50%;
+            border: 10px solid #4caf50;
+            animation: countdown-animation 6s linear forwards;
+            transform-origin: center center;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        /* CSS 动画，持续 10 秒 */
         @keyframes countdown-animation {
-            from { width: 100%; }
-            to { width: 0; }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Falling animation for fireworks and cakes */
+        .falling {
+            position: absolute;
+            top: -50px;
+            animation: fall-animation 5s linear infinite;
+        }
+
+        @keyframes fall-animation {
+            to { transform: translateY(100vh); }
+        }
+
+        .firework, .cake {
+            width: 30px;
+            height: 30px;
+        }
+
+        .firework {
+            background: url('https://img.icons8.com/emoji/48/confetti-ball.png') no-repeat center center / cover;
+        }
+
+        .cake {
+            background: url('https://img.icons8.com/emoji/48/birthday-cake-emoji.png') no-repeat center center / cover;
         }
     </style>
     <script>
@@ -46,12 +72,25 @@
                     window.location.href = 'https://example.com';
                 }
             }, 1000);
+
+            // Adding fireworks and cakes
+            const createFallingElement = (className) => {
+                const element = document.createElement('div');
+                element.classList.add('falling', className);
+                element.style.left = Math.random() * 100 + 'vw';
+                document.body.appendChild(element);
+            };
+
+            setInterval(() => {
+                createFallingElement('firework');
+                createFallingElement('cake');
+            }, 500);
         };
     </script>
 </head>
 <body>
     <div class="countdown" id="countdown">6秒后页面将跳转</div>
-    <div class="progress-bar">
+    <div class="progress-circle">
         <span></span>
     </div>
 </body>
