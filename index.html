@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>轩哥的看片专线😍</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .wrapper {
+            text-align: center;
+        }
+
         .countdown {
             font-size: 2rem;
             color: #333;
+            margin-bottom: 20px;
         }
 
         .progress-circle {
@@ -25,7 +39,7 @@
             border-radius: 50%;
             border: 10px solid #4caf50;
             animation: countdown-animation 6s linear forwards;
-            transform-origin: center center;
+            transform-origin: center;
             position: absolute;
             top: 0;
             left: 0;
@@ -89,9 +103,11 @@
     </script>
 </head>
 <body>
-    <div class="countdown" id="countdown">6秒后页面将跳转</div>
-    <div class="progress-circle">
-        <span></span>
+    <div class="wrapper">
+        <div class="countdown" id="countdown">6秒后页面将跳转</div>
+        <div class="progress-circle">
+            <span></span>
+        </div>
     </div>
 </body>
 </html>
